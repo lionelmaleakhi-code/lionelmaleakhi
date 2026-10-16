@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="Smart Math Web App — alat belajar matematika untuk luas, keliling, kategori nilai, analisis data, faktorial, dan kuis.">
+  <title>Smart Math Web App</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#beranda" aria-label="Smart Math Web App, beranda">
+      <span class="brand-mark" aria-hidden="true">∑</span>
+      <span><strong>Smart Math</strong><small>Web App</small></span>
+    </a>
+    <span class="header-note">Ruang belajar matematika</span>
+  </header>
+
+  <main class="shell" id="beranda">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">BELAJAR · HITUNG · PAHAMI</p>
+        <h1>Matematika jadi<br><span>lebih sederhana.</span></h1>
+        <p class="hero-description">Satu tempat untuk menghitung bangun datar, memahami nilai, menganalisis data, dan menguji pemahamanmu.</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="math-tile tile-main">π</div><div class="math-tile tile-small tile-a">x²</div>
+        <div class="math-tile tile-small tile-b">√</div><div class="math-tile tile-small tile-c">÷</div>
+      </div>
+    </section>
+
+    <nav class="feature-nav" aria-label="Navigasi fitur">
+      <button class="nav-item active" data-tab="geometry" type="button"><span>▱</span><span>Luas &amp; Keliling</span></button>
+      <button class="nav-item" data-tab="grade" type="button"><span>◷</span><span>Kategori Nilai</span></button>
+      <button class="nav-item" data-tab="analysis" type="button"><span>▥</span><span>Analisis Nilai</span></button>
+      <button class="nav-item" data-tab="factorial" type="button"><span>!</span><span>Faktorial</span></button>
+      <button class="nav-item" data-tab="quiz" type="button"><span>✓</span><span>Quiz</span></button>
+    </nav>
+
+    <section class="panel feature-panel active" id="tab-geometry" data-panel="geometry">
+      <div class="section-heading"><div><p class="eyebrow">KALKULATOR BANGUN DATAR</p><h2>Luas &amp; Keliling</h2></div><span class="heading-icon">▱</span></div>
+      <p class="section-intro">Pilih jenis perhitungan dan bangun datar, lalu masukkan ukuran yang diperlukan.</p>
+      <div class="form-grid">
+        <div class="field field-full">
+          <span class="field-label">Jenis Perhitungan</span>
+          <div class="segmented" role="group" aria-label="Jenis perhitungan">
+            <button type="button" class="segment active" data-calculation="area" aria-pressed="true">Luas</button>
+            <button type="button" class="segment" data-calculation="perimeter" aria-pressed="false">Keliling</button>
+          </div>
+        </div>
+        <label class="field field-full" for="shape-select"><span class="field-label">Pilih Bangun</span>
+          <select id="shape-select"><option value="square">Persegi</option><option value="rectangle">Persegi Panjang</option><option value="triangle">Segitiga</option></select>
+        </label>
+        <label class="field" id="field-1" for="number-1"><span class="field-label" id="label-1">Sisi</span><input id="number-1" type="number" step="any" inputmode="decimal" placeholder="Masukkan sisi"></label>
+        <label class="field hidden" id="field-2" for="number-2"><span class="field-label" id="label-2">Input 2</span><input id="number-2" type="number" step="any" inputmode="decimal" placeholder="Masukkan nilai"></label>
+        <label class="field hidden" id="field-3" for="number-3"><span class="field-label" id="label-3">Input 3</span><input id="number-3" type="number" step="any" inputmode="decimal" placeholder="Masukkan nilai"></label>
+        <div class="field field-full"><button id="calculate-button" class="button button-primary" type="button">Hitung sekarang <span aria-hidden="true">→</span></button></div>
+      </div>
+      <div class="result-box" id="geometry-result" role="status" aria-live="polite"><span class="result-label">HASIL PERHITUNGAN</span><p>Hasil perhitungan akan muncul di sini.</p></div>
+    </section>
+
+    <section class="panel feature-panel" id="tab-grade" data-panel="grade" hidden>
+      <div class="section-heading"><div><p class="eyebrow">KENALI HASIL BELAJARMU</p><h2>Kategori Nilai</h2></div><span class="heading-icon">◷</span></div>
+      <p class="section-intro">Masukkan nilai untuk mengetahui kategori pencapaian berdasarkan rentang nilai aplikasi.</p>
+      <form id="grade-form" class="form-grid">
+        <label class="field field-full" for="grade-input"><span class="field-label">Masukkan Nilai</span><input id="grade-input" type="number" step="any" inputmode="decimal" placeholder="Contoh: 85" required></label>
+        <div class="field field-full"><button class="button button-primary" type="submit">Cek kategori <span aria-hidden="true">→</span></button></div>
+      </form>
+      <div class="result-box" id="grade-result" role="status" aria-live="polite"><span class="result-label">KATEGORI NILAI</span><p>Masukkan nilai untuk melihat kategori.</p></div>
+      <div class="scale-list" aria-label="Rentang kategori nilai">
+        <div><span class="scale-dot excellent"></span><span>Sangat Baik</span><strong>90–100+</strong></div>
+        <div><span class="scale-dot good"></span><span>Baik</span><strong>75–89,99</strong></div>
+        <div><span class="scale-dot fair"></span><span>Cukup</span><strong>60–74,99</strong></div>
+        <div><span class="scale-dot practice"></span><span>Perlu Latihan</span><strong>Di bawah 60</strong></div>
+      </div>
+    </section>
+
+    <section class="panel feature-panel" id="tab-analysis" data-panel="analysis" hidden>
+      <div class="section-heading"><div><p class="eyebrow">TEMUKAN POLA DALAM ANGKA</p><h2>Analisis Nilai</h2></div><span class="heading-icon">▥</span></div>
+      <p class="section-intro">Masukkan beberapa angka yang dipisahkan dengan koma. Data asli, urutan, nilai maksimum, minimum, jumlah data, dan rata-rata akan ditampilkan.</p>
+      <label class="field" for="data-input"><span class="field-label">Data Nilai</span><textarea id="data-input" rows="3" placeholder="Contoh: 70, 80, 90, 75, 85"></textarea></label>
+      <div class="action-row"><button class="button button-primary" id="analysis-button" type="button">Analisis data <span aria-hidden="true">→</span></button><button class="button button-secondary" id="clear-data-button" type="button">Bersihkan</button></div>
+      <div class="result-box result-pre" id="analysis-result" role="status" aria-live="polite"><span class="result-label">HASIL ANALISIS</span><p>Hasil analisis akan muncul di sini.</p></div>
+      <div class="subsection">
+        <div class="subsection-heading"><span class="subsection-icon">⌕</span><div><h3>Pencarian Nilai</h3><p>Cari nilai tertentu dan lihat posisi kemunculannya pada data asli.</p></div></div>
+        <form id="search-form" class="form-grid">
+          <label class="field" for="target-input"><span class="field-label">Nilai yang Dicari</span><input id="target-input" type="number" step="any" inputmode="decimal" placeholder="Contoh: 80" required></label>
+          <div class="field field-end"><button class="button button-primary" type="submit">Cari nilai <span aria-hidden="true">→</span></button></div>
+        </form>
+        <div class="result-box" id="search-result" role="status" aria-live="polite"><span class="result-label">HASIL PENCARIAN</span><p>Masukkan data dan nilai yang ingin dicari.</p></div>
+      </div>
+    </section>
+
+    <section class="panel feature-panel" id="tab-factorial" data-panel="factorial" hidden>
+      <div class="section-heading"><div><p class="eyebrow">MATEMATIKA DISKRIT</p><h2>Faktorial</h2></div><span class="heading-icon">!</span></div>
+      <p class="section-intro">Faktorial dari bilangan bulat nonnegatif adalah hasil perkalian bilangan tersebut hingga 1. Contoh: 5! = 5 × 4 × 3 × 2 × 1 = 120.</p>
+      <form id="factorial-form" class="form-grid">
+        <label class="field field-full" for="factorial-input"><span class="field-label">Masukkan Bilangan</span><input id="factorial-input" type="number" step="any" inputmode="numeric" placeholder="Contoh: 5" required></label>
+        <div class="field field-full"><button class="button button-primary" type="submit">Hitung faktorial <span aria-hidden="true">→</span></button></div>
+      </form>
+      <div class="result-box" id="factorial-result" role="status" aria-live="polite"><span class="result-label">HASIL FAKTORIAL</span><p>Hasil faktorial akan muncul di sini.</p></div>
+      <p class="helper-note">Catatan: hasil yang sangat besar ditampilkan dengan presisi bilangan JavaScript yang tersedia.</p>
+    </section>
+
+    <section class="panel feature-panel" id="tab-quiz" data-panel="quiz" hidden>
+      <div class="section-heading"><div><p class="eyebrow">UJI PEMAHAMANMU</p><h2>Quiz Smart Math</h2></div><span class="heading-icon">✓</span></div>
+      <p class="section-intro">Jawablah lima soal berikut. Setiap jawaban benar mendapatkan 20 poin. Pilih jawaban lalu tekan “Periksa Jawaban” sebelum melanjutkan.</p>
+      <div class="quiz-meta"><span id="quiz-counter">Soal 1 dari 5</span><span class="score-pill">Skor <strong id="quiz-score">0</strong><span> / 100</span></span></div>
+      <div class="progress-track" aria-label="Kemajuan quiz"><div id="quiz-progress" class="progress-value"></div></div>
+      <div class="quiz-card">
+        <p class="question-number" id="question-number">PERTANYAAN 01</p>
+        <h3 id="quiz-question">Berapakah luas persegi dengan panjang sisi 5 cm?</h3>
+        <fieldset class="options-fieldset"><legend>Pilih jawaban</legend><div id="quiz-options" class="quiz-options"></div></fieldset>
+        <div id="quiz-feedback" class="quiz-feedback" role="status" aria-live="polite">Belum diperiksa.</div>
+        <div class="quiz-actions"><button class="button button-primary" id="check-answer-button" type="button">✓ Periksa jawaban</button><button class="button button-secondary" id="next-question-button" type="button" disabled>Soal berikutnya →</button><button class="button button-secondary hidden" id="restart-quiz-button" type="button">↻ Mulai kembali</button></div>
+      </div>
+    </section>
+
+    <footer class="site-footer"><span class="footer-mark">∑</span><span>Smart Math Web App</span><span class="footer-separator">·</span><span>Belajar matematika, selangkah demi selangkah.</span></footer>
+  </main>
+</body>
+</html>
